@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import 'package:shop_app/models/cart_item.dart';
+
 class Cart with ChangeNotifier {
   Map<String, CartItem> _items = {};
 
@@ -38,17 +40,9 @@ class Cart with ChangeNotifier {
     _items.remove(productId);
     notifyListeners();
   }
-}
 
-class CartItem {
-  final String id;
-  final String title;
-  final int quantity;
-  final double price;
-
-  CartItem(
-      {@required this.id,
-      @required this.title,
-      @required this.quantity,
-      @required this.price});
-}
+  void clear() {
+    _items = {};
+    notifyListeners();
+  }
+} 
