@@ -9,6 +9,9 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+//    if notifier doesn't depend on context
+//    better to use when object is already created (like in ProductsGrid)
+//    return ChangeNotifierProvider.value(value: Products(), child: ...,)
     return ChangeNotifierProvider(
       create: (ctx) => Products(),
       child: MaterialApp(
