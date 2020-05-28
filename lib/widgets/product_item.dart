@@ -25,11 +25,16 @@ class ProductItem extends StatelessWidget {
         ),
         footer: GridTileBar(
           backgroundColor: Colors.black87,
-          leading: IconButton(
-            icon: Icon(
-                product.isFavorite ? Icons.favorite : Icons.favorite_border),
-            color: Theme.of(context).accentColor,
-            onPressed: () => product.toggleFavorite(),
+          // can be used to wrap only some subpart of widget tree
+          leading: Consumer<Product>(
+            builder: (ctx, product, child) => IconButton(
+              icon: Icon(
+                  product.isFavorite ? Icons.favorite : Icons.favorite_border),
+              color: Theme.of(context).accentColor,
+//              someChild: child,
+              onPressed: () => product.toggleFavorite(),
+            ),
+//            child: const Text('I don\'t depend on changes'),
           ),
           trailing: IconButton(
             icon: Icon(Icons.shopping_cart),
